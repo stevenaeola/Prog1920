@@ -16,21 +16,6 @@ app.get("/", function (request, response){
     response.send(recipes);
 });
 
-app.get("/wave/:who", function (request, response){
-    const who = request.params.who;
-    response.send("Hello to " +who);
-});
-
-app.get("/shout", function (request, response){
-    const who = request.query.who;
-    response.send("HELLO TO " +who);
-});
-
-app.post("/shout", function (request, response){
-    const who = request.query.who;
-    response.send("HELLO TO " +who);
-});
-
 app.post("/new", function (request, response){
     const title = request.body.title;
     const url = request.body.url;
@@ -55,15 +40,16 @@ app.get("/potatoes", function (request, response){
 
 app.get("/search", function (request, response){
     const keyword = request.query.keyword;
+    var matching = [];
     console.log(`Searching for ${keyword}`);
     for(let i = 0; i<recipes.length; i++){
         console.log("Comparing with " + recipes[i].title);
         if(recipes[i].title.toLowerCase().includes(keyword.toLowerCase())){
-            console.log("found");
-            response.send(recipes[i].href);
-            console.log("Sent " + recipes[i].href);
+            matching.push(recipes[i]);
         }
     }
+    response.send(matching);
+
 
 });
 
