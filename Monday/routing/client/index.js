@@ -5,7 +5,8 @@ form.addEventListener('submit', async function(event){
 
     /* extract searh term from form */
 
-    let keyword = 
+    let keyword = document.getElementById('search_keyword').value
+    
     /* send get request */
 
     let response = await fetch('http://127.0.0.1:8090/search?keyword=' + keyword);
