@@ -64,6 +64,30 @@
           <button>Search</button>
         </form>
 
+        <form id='add_form' action='/new' method='post'>
+          <h2>Add new recipe</h2>
+
+                <div><label>Recipe title</label>
+                  <input id='new_title' name='title' type='text'></input>
+                </div>
+                <div>
+                  <label>URL</label>
+                  <input id='new_url' name='url' type='text'></input>
+                </div>
+                <div>
+                  <label>Thumbnail url</label>
+                  <input id = 'new_thumbnail' name='thumbnail' type='text'></input>
+                </div>
+
+
+                <button>Submit new recipe</button>
+
+                
+          <input name='keyword' type='text' id='search_keyword'></input>
+          <button>Search</button>
+        </form>
+
+
         <div id='search_results'>
 
         </div>

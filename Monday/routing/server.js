@@ -17,11 +17,15 @@ app.get("/", function (request, response){
 });
 
 app.post("/new", function (request, response){
+
     const title = request.body.title;
     const url = request.body.url;
+    const thumbnail = request.body.thumbnail;
     const newRecipe = {"title": title,
-                       "href": url};
+                       "href": url,
+                       "thumbnail": thumbnail};
     recipes.push(newRecipe);
+    
     const json = JSON.stringify(recipes);
     fs.writeFile('recipes.json', json, 'utf8', console.log);
 
