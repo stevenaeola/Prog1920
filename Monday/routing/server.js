@@ -32,16 +32,6 @@ app.post("/new", function (request, response){
     response.send(`Added recipe ${title} ${url}`);
 });
 
-
-app.get("/potatoes", function (request, response){
-    const key = request.query.key;
-    for(let i = 0; i<recipes.length; i++){
-        if(recipes[i].title == key){
-            response.send(recipes[i].href);
-        }
-    }
-});
-
 app.get("/search", function (request, response){
     const keyword = request.query.keyword;
     var matching = [];
