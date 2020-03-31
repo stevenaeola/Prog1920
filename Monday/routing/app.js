@@ -1,8 +1,12 @@
 var express = require("express");
 var app = express();
 
+/*
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
+*/
+
+app.use(express.json());
 
 app.use(express.static('client'));
 
@@ -17,19 +21,19 @@ app.get("/", function (request, response){
 });
 
 app.post("/new", function (request, response){
-
+/*
     const title = request.body.title;
     const url = request.body.url;
     const thumbnail = request.body.thumbnail;
-    const newRecipe = {"title": title,
-                       "href": url,
-                       "thumbnail": thumbnail};
+*/
+    const newRecipe = request.body;
+    
     recipes.push(newRecipe);
     
     const json = JSON.stringify(recipes);
     fs.writeFile('recipes.json', json, 'utf8', console.log);
 
-    response.send(`Added recipe ${title} ${url}`);
+    response.send(`Added recipe ${newRecipe.title} ${newRecipe.url}`);
 });
 
 app.get("/search", function (request, response){
