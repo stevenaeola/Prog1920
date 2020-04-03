@@ -39,9 +39,9 @@ app.post("/new", function (request, response){
 app.get("/search", function (request, response){
     const keyword = request.query.keyword;
     var matching = [];
-    console.log(`Searching for ${keyword}`);
+//    console.log(`Searching for ${keyword}`);
     for(let i = 0; i<recipes.length; i++){
-        console.log("Comparing with " + recipes[i].title);
+//        console.log("Comparing with " + recipes[i].title);
         if(recipes[i].title.toLowerCase().includes(keyword.toLowerCase())){
             matching.push(recipes[i]);
         }

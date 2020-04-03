@@ -29,6 +29,37 @@ describe('Test the recipe service', () => {
 	    .get('/search?keyword=chicken')
 	    .expect(/chicken/);
     });
+
+    test('POST /new works', () => {
+        const params = {
+            title: "This is a test recipe",
+            url: "http://testme.test",
+            thumbnail: "https://image.flaticon.com/icons/svg/1875/1875660.svg"
+        }
+        
+        return request(app)
+	    .post('/new')
+            .send(params)
+            .expect(200);
+    });
+
+    test('POST /new adds data to be accessed via GET', async () => {
+        const params = {
+            title: "This is a test recipe vvccbb",
+            url: "http://testme.test",
+            thumbnail: "https://image.flaticon.com/icons/svg/1875/1875660.svg"
+        }
+
+        await request(app)
+	    .post('/new')
+            .send(params);
+        
+        return request(app)
+	    .get('/search?keyword=vvccbb')
+	    .expect(/vvvccb/);
+    });
+
+
 /*
     test('GET /people/doctorwhocomposer succeeds', () => {
         return request(app)
